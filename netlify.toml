@@ -11,6 +11,8 @@
 [functions]
   # Use the esbuild bundler for better performance and compatibility.
   node_bundler = "esbuild"
+  # Mark the browser package as external to prevent bundling issues.
+  external_node_modules = ["@sparticuz/chromium"]
 
 # This section applies specific settings to ALL functions.
 # This is the correct syntax for setting timeout and memory.
