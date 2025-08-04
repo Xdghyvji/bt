@@ -7,11 +7,15 @@
   # The directory for our serverless backend functions.
   functions = "netlify/functions"
 
-# --- ADD THIS SECTION ---
-# This tells Netlify to use a better bundler for your functions,
-# which will correctly include the 'puppeteer-core' dependency.
+# This section configures the function bundling.
 [functions]
+  # Use the esbuild bundler for better performance and compatibility.
   node_bundler = "esbuild"
+  # --- ADD THIS LINE ---
+  # This tells the bundler to not include 'puppeteer-core' in the final
+  # function file. Instead, it will be required at runtime on the server.
+  # This is the critical fix for the "Could not resolve" error.
+  external_node_modules = ["puppeteer-core"]
 
 # This rule ensures that API calls from the frontend (e.g., /api/like-bot)
 # are correctly routed to the serverless function in production.
