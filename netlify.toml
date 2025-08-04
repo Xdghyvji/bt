@@ -7,6 +7,12 @@
   # The directory for our serverless backend functions.
   functions = "netlify/functions"
 
+# --- ADD THIS SECTION ---
+# This tells Netlify to use a better bundler for your functions,
+# which will correctly include the 'puppeteer-core' dependency.
+[functions]
+  node_bundler = "esbuild"
+
 # This rule ensures that API calls from the frontend (e.g., /api/like-bot)
 # are correctly routed to the serverless function in production.
 [[redirects]]
