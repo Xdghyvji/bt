@@ -11,11 +11,8 @@
 [functions]
   # Use the esbuild bundler for better performance and compatibility.
   node_bundler = "esbuild"
-  # --- ADD THIS LINE ---
-  # This tells the bundler to not include 'puppeteer-core' in the final
-  # function file. Instead, it will be required at runtime on the server.
-  # This is the critical fix for the "Could not resolve" error.
-  external_node_modules = ["puppeteer-core"]
+  # We are removing the 'external_node_modules' line to let the nested
+  # package.json handle the puppeteer-core dependency directly.
 
 # This rule ensures that API calls from the frontend (e.g., /api/like-bot)
 # are correctly routed to the serverless function in production.
