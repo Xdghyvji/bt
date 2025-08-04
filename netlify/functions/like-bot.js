@@ -16,13 +16,15 @@ export const handler = async (event) => {
       return { statusCode: 400, body: JSON.stringify({ error: 'postUrl is required' }) };
     }
 
-    // --- NEW LAUNCH METHOD ---
+    // --- FINAL LAUNCH METHOD ---
     // This launches the browser packaged directly with the function.
+    // The syntax for executablePath is corrected for the older package version.
     console.log('Launching self-contained browser...');
     browser = await puppeteer.launch({
       args: chromium.args,
       defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath(),
+      // CORRECTED: Use the property directly, not as a function call.
+      executablePath: chromium.executablePath,
       headless: chromium.headless,
       ignoreHTTPSErrors: true,
     });
