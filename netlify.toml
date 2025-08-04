@@ -1,0 +1,15 @@
+# This file configures the build and deployment settings for Netlify.
+[build]
+  # Vite's build command.
+  command = "npm run build"
+  # Vite's default output directory is 'dist'.
+  publish = "dist"
+  # The directory for our serverless backend functions.
+  functions = "netlify/functions"
+
+# This rule ensures that API calls from the frontend (e.g., /api/like-bot)
+# are correctly routed to the serverless function in production.
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
